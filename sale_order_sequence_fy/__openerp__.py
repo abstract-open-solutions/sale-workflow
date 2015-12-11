@@ -5,7 +5,7 @@
     "name": "Sale Order Sequence FY",
     "summary": "Fiscalyear support for SO sequence",
     "version": "8.0.1.0.0",
-    "category": "Sale",
+    "category": "Sales Management",
     "website": "https://odoo-community.org/",
     "author": "Abstract, Odoo Community Association (OCA)",
     "license": "AGPL-3",
