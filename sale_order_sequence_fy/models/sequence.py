@@ -13,10 +13,8 @@ class IrSequence(models.Model):
     def _next(self, cr, uid, seq_ids, context=None):
         context = context or {}
         new_seq_ids = []
-        #fy_model = self.pool['account.fiscalyear']
         fy_id = context.get('fiscalyear_id', False)
         if fy_id and len(seq_ids) > 1:
-            #fy = fy_model.browse(cr, uid, fy_id, context)
             for seq in self.browse(cr, uid, seq_ids, context):
                 if (seq.prefix and FY_SLOT in seq.prefix) or (
                         seq.suffix and FY_SLOT in seq.suffix):
