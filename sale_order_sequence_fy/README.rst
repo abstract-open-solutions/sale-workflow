@@ -11,12 +11,12 @@ This module allows the use of account_auto_sequence_fy on Sale Orders
 Configuration
 =============
 
-See account_auto_sequence_fy README 
+See account_auto_fy_sequence README 
 
 Usage
 =====
 
-See account_auto_sequence_fy README 
+See account_auto_fy_sequence README 
 
 Known issues / Roadmap
 ======================
