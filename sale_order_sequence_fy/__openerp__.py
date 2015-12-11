@@ -13,5 +13,6 @@
     "installable": True,
     "depends": [
         "sale",
+        "account_auto_sequence_fy"
     ],
 }
