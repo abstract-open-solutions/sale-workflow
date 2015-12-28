@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
     def create(self, cr, uid, vals, context=None):
         context = context or {}
         fy_model = self.pool['account.fiscalyear']
-        fy_id = fy_model.find(cr, uid, vals['date_order'])
-        context.update({'fiscalyear_id': fy_id})
+        if 'date_order' in vals:
+            fy_id = fy_model.find(cr, uid, vals['date_order'])
+            context.update({'fiscalyear_id': fy_id})
         return super(SaleOrder, self).create(cr, uid, vals, context)
