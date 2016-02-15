@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2015 davide.corio@abstract.it
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
+from openerp import api
 from openerp import models
 
 
@@ -19,3 +19,12 @@ class SaleOrder(models.Model):
             fy_id = self.get_fiscal_year(cr, uid, vals['date_order'])
             context.update({'fiscalyear_id': fy_id})
         return super(SaleOrder, self).create(cr, uid, vals, context)
+
+    @api.multi
+    def copy_quotation(self):
+        self.ensure_one()
+        if 'fiscalyear_id' not in self.env.context:
+            fy_id = self.get_fiscal_year(self.date_order)
+            revision_self = self.with_context(fiscalyear_id=fy_id)
+            return super(SaleOrder, revision_self).copy_quotation()
+        return super(SaleOrder, self).copy_quotation()
