@@ -20,6 +20,14 @@ class SaleOrder(models.Model):
             context.update({'fiscalyear_id': fy_id})
         return super(SaleOrder, self).create(cr, uid, vals, context)
 
+    @api.one
+    def copy(self, default={}):
+        if 'fiscalyear_id' not in self.env.context:
+            fy_id = self.get_fiscal_year(self.date_order)
+            revision_self = self.with_context(fiscalyear_id=fy_id)
+            return super(SaleOrder, revision_self).copy(default)
+        return super(SaleOrder, self).copy(default)
+
     @api.multi
     def copy_quotation(self):
         self.ensure_one()
